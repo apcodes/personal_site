@@ -130,8 +130,7 @@ export default function Home() {
                 Degree Black Belt in Taekwondo 🥋.
               </p>
               <p className="text-lg">
-                I'm passionate about building applications that solve real-world problems and am constantly learning new
-                technologies to expand my skill set.
+              "I'm always hungry. I can be better always. - Son Heung Min"
               </p>
             </div>
           </div>
