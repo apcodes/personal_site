@@ -1,101 +1,208 @@
-import Image from "next/image";
+"use client"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { MoonIcon, SunIcon, GithubIcon, MailIcon, LinkedinIcon, FileTextIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import ProjectCard from "@/components/project-card"
+import GlowingButton from "@/components/glowing-button"
+import ProfilePhoto from "@/components/profile-photo"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Initialize dark mode based on user preference
+  useEffect(() => {
+    const isDark =
+      localStorage.getItem("darkMode") === "true" ||
+      (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    setIsDarkMode(isDark)
+
+    if (isDark) {
+      document.documentElement.classList.add("dark")
+    }
+  }, [])
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+    if (!isDarkMode) {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem("darkMode", "true")
+    } else {
+      document.documentElement.classList.remove("dark")
+      localStorage.setItem("darkMode", "false")
+    }
+  }
+
+  return (
+    <div
+      className={cn(
+        "min-h-screen bg-white text-gray-900 transition-colors duration-300",
+        isDarkMode && "dark:bg-gray-950 dark:text-gray-100",
+      )}
+    >
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50 to-white dark:from-gray-900 dark:to-gray-950"></div>
+
+      {/* Header */}
+      <header className="sticky top-0 z-40 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:border-gray-800">
+        <div className="container flex h-16 items-center">
+          {/* Logo - 1/3 width */}
+          <div className="w-1/3">
+            <Link href="/" className="flex items-center space-x-2">
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+                Anish Parepalli
+              </span>
+            </Link>
+          </div>
+
+          {/* Navigation - 1/3 width, centered */}
+          <nav className="hidden md:flex items-center justify-center w-1/3">
+            <div className="flex items-center space-x-8 text-sm font-medium">
+              <Link href="#about" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                About
+              </Link>
+              <Link href="#projects" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                Projects
+              </Link>
+              <Link href="#contact" className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                Contact
+              </Link>
+            </div>
+          </nav>
+
+          {/* Dark mode toggle - 1/3 width, right aligned */}
+          <div className="flex items-center justify-end w-1/3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleDarkMode}
+              className="rounded-full"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? (
+                <SunIcon className="h-5 w-5 text-yellow-400" />
+              ) : (
+                <MoonIcon className="h-5 w-5 text-gray-700" />
+              )}
+            </Button>
+          </div>
         </div>
+      </header>
+
+      <main className="container py-8 md:py-12">
+        {/* Hero Section */}
+        <section className="flex flex-col items-center text-center space-y-4 py-8 md:py-12">
+          <ProfilePhoto src="/photo.jpg?height=200&width=200" alt="Anish Parepalli" isDarkMode={isDarkMode} />
+
+          <div className="relative mt-6">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Anish Parepalli</h1>
+            <div className="absolute -inset-1 -z-10 blur-xl opacity-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+          </div>
+          <p className="text-xl text-gray-600 dark:text-gray-400">CS & Stats @ UNC Chapel Hill</p>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Incoming Software Engineer Intern @ The Vanguard Group
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4 mt-6  ">
+            <GlowingButton href="#projects" variant="default">
+              View Projects
+            </GlowingButton>
+            <GlowingButton href="#contact" variant="default">
+              Get In Touch
+            </GlowingButton>
+          </div>
+        </section>
+
+        {/* About Me Section */}
+        <section id="about" className="py-8 md:py-12">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 relative inline-block">
+              About Me
+              <div className="absolute -bottom-1 left-0 w-1/3 h-1 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+            </h2>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p className="text-lg">
+                Hi! I'm Anish Parepalli, a 3rd year at UNC. My interests are in software engineering, data science, and
+                solving challenging problems. Outside of tech, I'm an avid Tottenham Hotspur fan ⚽ and hold a First
+                Degree Black Belt in Taekwondo 🥋.
+              </p>
+              <p className="text-lg">
+                I'm passionate about building applications that solve real-world problems and am constantly learning new
+                technologies to expand my skill set.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-8 md:py-12">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12 relative inline-block">
+              Projects
+              <div className="absolute -bottom-1 left-0 w-1/3 h-1 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <ProjectCard
+                title="The Pastebin + URL Shortener"
+                description="Developed a web-based Paste Bin and URL Shortener using Python and RESTful API design principles. Deployed on Kubernetes OKD, leveraging oc for cluster management. Users can shorten URLs and store text snippets."
+                tags={["Python", "RESTful API", "Kubernetes", "OKD"]}
+                link="https://github.com/apcodes"
+                isDarkMode={isDarkMode}
+              />
+              <ProjectCard
+                title="Personal Website for Teacher"
+                description="Created a Personal Website for a Teacher using JavaScript, HTML, CSS, and Bootstrap and hosted on Github-Pages. Implemented responsive design using Bootstrap's grid system and custom media queries."
+                tags={["JavaScript", "HTML", "CSS", "Bootstrap"]}
+                link="https://github.com/apcodes"
+                isDarkMode={isDarkMode}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-8 md:py-12">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 relative inline-block">
+              Get In Touch
+              <div className="absolute -bottom-1 left-0 w-1/3 h-1 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+            </h2>
+            <p className="text-lg mb-6">
+              I am always open to discussing new projects, opportunities, or collaborations.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <GlowingButton href="mailto:Aparepalli@gmail.com" variant="default">
+                <MailIcon className="mr-2 h-4 w-4" />
+                Email Me
+              </GlowingButton>
+              <GlowingButton href="https://linkedin.com/in/anish-parepalli" variant="default">
+                <LinkedinIcon className="mr-2 h-4 w-4" />
+                LinkedIn
+              </GlowingButton>
+              <GlowingButton href="https://github.com/apcodes" variant="default">
+                <GithubIcon className="mr-2 h-4 w-4" />
+                GitHub
+              </GlowingButton>
+              <GlowingButton href="/Anish_Parepalli_Resume.pdf" variant="default">
+                <FileTextIcon className="mr-2 h-4 w-4" />
+                Resume
+              </GlowingButton>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="border-t py-6 dark:border-gray-800">
+        <div className="container text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            © {new Date().getFullYear()} Anish Parepalli. All rights reserved.
+          </p>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
+
