@@ -101,9 +101,8 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Anish Parepalli</h1>
             <div className="absolute -inset-1 -z-10 blur-xl opacity-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
           </div>
-          <p className="text-xl text-gray-600 dark:text-gray-400">CS & Stats @ UNC Chapel Hill</p>
           <p className="text-lg text-gray-600 dark:text-gray-400">
-            Incoming Software Engineer Intern @ The Vanguard Group
+             Prev @ Vanguard | Current @ UNC CS + Stats| Future @ ????
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-6  ">
