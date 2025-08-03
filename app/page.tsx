@@ -102,7 +102,7 @@ export default function Home() {
             <div className="absolute -inset-1 -z-10 blur-xl opacity-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400">
-             Prev @ Vanguard | Current @ UNC CS + Stats| Future @ ????
+             Prev @ Vanguard | Current @ UNC CS + Stats | Future @ ????
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-6  ">
@@ -124,9 +124,10 @@ export default function Home() {
             </h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg">
-                Hi! I'm Anish Parepalli, a 3rd year at UNC. My interests are in software engineering, data science, and
+                Hi! I'm Anish Parepalli, a senior at UNC. My interests are in software engineering, data science, and
                 solving challenging problems. Outside of tech, I'm an avid Tottenham Hotspur fan ⚽ and hold a First
-                Degree Black Belt in Taekwondo 🥋.
+                Degree Black Belt in Taekwondo 🥋. I recently completed a 10-week internship at Vanguard as a Software Engineering Intern, where I built an internal tool using AWS Lambda and TypeScript. The tool cleaned up and fixed an error in Vanguard's DPM runs, ensuring unenrolled clients were no longer counted as
+                errored clients—preventing inflated error counts from being reported to senior management. 
               </p>
               <p className="text-lg">
               "I'm always hungry. I can be better always. - Son Heung Min"
@@ -143,6 +144,13 @@ export default function Home() {
               <div className="absolute -bottom-1 left-0 w-1/3 h-1 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <ProjectCard
+                title="Fullstack PDF Parsing Tool"
+                description="Built a comprehensive PDF parsing tool using Python, AWS Bedrock (Claude Sonnet 4), and Angular to extract and present Vanguard securities and dividends from 1099-DIV forms. Calculates estimated state and federal tax exemptions based on refund rates with AI-powered guardrails for accuracy. (Not available for public use)"
+                tags={["Python", "AWS Bedrock", "Claude Sonnet 4", "Angular"]}
+                link="https://github.com/apcodes"
+                isDarkMode={isDarkMode}
+              />
               <ProjectCard
                 title="The Pastebin + URL Shortener"
                 description="Developed a web-based Paste Bin and URL Shortener using Python and RESTful API design principles. Deployed on Kubernetes OKD, leveraging oc for cluster management. Users can shorten URLs and store text snippets."

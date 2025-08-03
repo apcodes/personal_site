@@ -41,10 +41,7 @@ export default function ProfilePhoto({ src, alt, size = 200, isDarkMode = false 
         </div>
       </div>
 
-      {/* Upload overlay - visible only when editing */}
-      <div className="absolute inset-0 rounded-full flex items-center justify-center bg-black/0 hover:bg-black/20 transition-colors cursor-pointer opacity-0 hover:opacity-100">
-        <span className="text-white font-medium">Upload Photo</span>
-      </div>
+
     </div>
   )
 }
