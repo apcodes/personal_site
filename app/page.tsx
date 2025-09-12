@@ -124,7 +124,7 @@ export default function Home() {
             </h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg">
-                Hi! I'm Anish Parepalli, a senior at UNC. My interests are in software engineering, data science, and
+                Hi! I'm Anish Parepalli, a student at UNC. My interests are in software engineering, data science, and
                 solving challenging problems. Outside of tech, I'm an avid Tottenham Hotspur fan ⚽ and hold a First
                 Degree Black Belt in Taekwondo 🥋. I recently completed a 10-week internship at Vanguard as a Software Engineering Intern, where I built an internal tool using AWS Lambda and TypeScript. The tool cleaned up and fixed an error in Vanguard's DPM runs, ensuring unenrolled clients were no longer counted as
                 errored clients—preventing inflated error counts from being reported to senior management. 
