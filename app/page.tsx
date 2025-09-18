@@ -148,21 +148,21 @@ export default function Home() {
                 title="Fullstack PDF Parsing Tool"
                 description="Built a comprehensive PDF parsing tool using Python, AWS Bedrock (Claude Sonnet 4), and Angular to extract and present Vanguard securities and dividends from 1099-DIV forms. Calculates estimated state and federal tax exemptions based on refund rates with AI-powered guardrails for accuracy. (Not available for public use)"
                 tags={["Python", "AWS Bedrock", "Claude Sonnet 4", "Angular"]}
-                link="https://github.com/apcodes"
+                link="https://theuselessweb.com/"
                 isDarkMode={isDarkMode}
               />
               <ProjectCard
                 title="The Pastebin + URL Shortener"
-                description="Developed a web-based Paste Bin and URL Shortener using Python and RESTful API design principles. Deployed on Kubernetes OKD, leveraging oc for cluster management. Users can shorten URLs and store text snippets."
+                description="Developed a web-based Paste Bin and URL Shortener using Python and RESTful API design principles. Was deployed on Kubernetes OKD until support for pod was ended. Users were able to shorten URLs and store text snippets."
                 tags={["Python", "RESTful API", "Kubernetes", "OKD"]}
-                link="https://github.com/apcodes"
+                link="https://comp423-25s.github.io/ex02-link-share-apcodes/#/"
                 isDarkMode={isDarkMode}
               />
               <ProjectCard
                 title="Personal Website for Teacher"
                 description="Created a Personal Website for a Teacher using JavaScript, HTML, CSS, and Bootstrap and hosted on Github-Pages. Implemented responsive design using Bootstrap's grid system and custom media queries."
                 tags={["JavaScript", "HTML", "CSS", "Bootstrap"]}
-                link="https://github.com/apcodes"
+                link="https://apcodes.github.io/anishpa.github.io"
                 isDarkMode={isDarkMode}
               />
             </div>
