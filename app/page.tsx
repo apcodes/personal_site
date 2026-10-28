@@ -7,8 +7,7 @@ const LINKS = [
 
 const FACTS = [
   "Software engineer based in Charlotte, NC",
-  "Application Engineer at Vanguard in Advice & Wealth Management Tech. Most recently, swapped Netflix's Falcor for direct API integrations and cut latency 2–3x across 900K+ monthly calls",
-  "Built a Claude-powered release tool on Atlassian MCP; its AI execution layer became a pattern other teams adopted",
+  "Application Engineer at Vanguard in Advice & Wealth Management Tech",
   "Before that: intern at Vanguard and at CS + Social Good",
   "B.S. Computer Science + Statistics, UNC Chapel Hill, 2026; TA for Foundations of Programming",
   "Lately drawn to low-level systems and performance engineering",
